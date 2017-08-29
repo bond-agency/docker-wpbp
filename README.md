@@ -1,6 +1,6 @@
 # docker-wpbp
 
-Docker WordPress boilerplate is docker-compose opinionated template to start any WP project with Docker.
+Docker WordPress boilerplate is opinionated docker-compose template to start WordPress project with Docker.
 
 **NOTICE: This boilerplate has not yet been tested in production.**
 
