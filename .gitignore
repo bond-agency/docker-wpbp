@@ -1,0 +1,46 @@
+# Dont keep any extra
+/database/**
+/wordpress/wp-content/themes/**
+/wordpress/wp-content/plugins/**
+/wordpress/wp-content/mu-plugins/**
+/wordpress/wp-content/uploads/**
+/wordpress/wp-content/upgrade/**
+
+# Keep your own theme etc.
+!/wordpress/wp-content/themes/YOUR_THEME/
+!/wordpress/wp-content/themes/YOUR_THEME/**
+
+!/wordpress/wp-content/mu-plugins/1-acf-pro-loader.php
+!/wordpress/wp-content/mu-plugins/1-timber-loader.php
+!/wordpress/wp-content/mu-plugins/includes/
+!/wordpress/wp-content/mu-plugins/includes/**
+
+# Global ignores
+**/node_modules/
+[Tt]humbs.db
+[Dd]esktop.ini
+*.DS_store
+.DS_store?
+*.bin
+**/tmp/
+*.tmp
+*.bak
+*.log
+*.[Cc]ache
+*.cpr
+*.orig
+*.php.in
+.idea/
+**/temp/
+._*
+.Trashes
+.svn
+*.codekit
+*.codekit-cache
+*.scssc
+*.scss-cache
+*.sass-cache
+*.fusebox
+
+# Global keeps
+!.gitkeep

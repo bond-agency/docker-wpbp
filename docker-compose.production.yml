@@ -1,0 +1,61 @@
+version: '3'
+services:
+
+  # nginx
+  nginx:
+    image: roopemerikukka/nginx-extras:latest
+    expose:
+      - 80
+    volumes:
+      - www-data:/var/www/html
+      - www-cache:/var/www/cache
+      - ./nginx/config/global:/etc/nginx/global:ro
+      - ./nginx/config/h5bp:/etc/nginx/h5bp:ro
+      - ./nginx/config/vhost.production.conf:/etc/nginx/vhost.conf:ro
+      - ./nginx/config/mime.types:/etc/nginx/mime.types:ro
+      - ./nginx/config/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./wordpress/wp-content:/var/www/html/wp-content
+    links:
+      - wordpress
+    restart: always
+    environment:
+      #- VIRTUAL_HOST=example.com
+      #- LETSENCRYPT_HOST=example.com
+      #- LETSENCRYPT_EMAIL=mail@example.com
+
+  # database
+  database:
+    image: mariadb
+    volumes:
+      - ./database:/var/lib/mysql
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=example
+
+  # wordpress
+  wordpress:
+    build:
+      context: ./wordpress
+    restart: always
+    links:
+      - database
+    volumes:
+      - ./wordpress/wp-content:/var/www/html/wp-content
+      - ./wordpress/config/wp-config.php:/var/www/config/wp-config.php:ro
+      - www-data:/var/www/html
+      - www-cache:/var/www/cache
+    environment:
+      - WPTB_ENV=production
+      - WORDPRESS_DB_NAME=wordpress
+      - WORDPRESS_DB_HOST=database
+      - WORDPRESS_DB_PASSWORD=example
+      - USER_ID=${USER_ID}
+
+volumes:
+  www-data:
+  www-cache:
+
+networks:
+  default:
+    external:
+      name: nginx-proxy-network
