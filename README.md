@@ -17,7 +17,11 @@ Add next line to your `.bash_profile` (or `.zshrc` etc.) file.
 # Export your user id
 export USER_ID=$(id -u)
 ```
-This ensures that docker-compose has always your user ID available as environment variable and it can be mapped for the containers. This needs to be done only once. Remember to source the file before continuing: `source ~/.bash_profile`.
+This ensures that docker-compose has always your user ID available as environment variable and it can be mapped for the containers. This needs to be done only once. Remember to source the file before continuing:
+
+```
+source ~/.bash_profile
+```
 
 Next you need to define all of the remaining variables in all relevant compose files. There is compose files for three different environments: `development`, `staging` and `production`.
 
