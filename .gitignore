@@ -1,12 +1,8 @@
 # Dont keep any extra
 /database/**
-/wordpress/wp-content/themes/**
-/wordpress/wp-content/plugins/**
-/wordpress/wp-content/mu-plugins/**
-/wordpress/wp-content/uploads/**
-/wordpress/wp-content/upgrade/**
+/wordpress/wp-content/**
 
-# Keep your own theme etc.
+# Keep your own theme, plugins etc.
 !/wordpress/wp-content/themes/YOUR_THEME/
 !/wordpress/wp-content/themes/YOUR_THEME/**
 

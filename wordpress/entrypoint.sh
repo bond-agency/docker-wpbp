@@ -30,7 +30,8 @@ require_once('/var/www/config/wp-config.php');
 PHP
 
 # Fix permissions
-usermod -u $USER_ID www-data
+usermod -u $USER_ID -o www-data
+chown -R www-data /var/www/html
 
 # execute CMD
 exec "$@"
