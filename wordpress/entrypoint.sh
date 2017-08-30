@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Fix permissions
+usermod -u $USER_ID -o www-data
+chown -R www-data /var/www/html
+
 # mute CMD from official wordpress image entrypoint.
 sed -i -e 's/^exec "$@"/#exec "$@"/g' /usr/local/bin/docker-entrypoint.sh
 
@@ -28,10 +32,6 @@ wp core config \
   --extra-php <<PHP
 require_once('/var/www/config/wp-config.php');
 PHP
-
-# Fix permissions
-usermod -u $USER_ID -o www-data
-chown -R www-data /var/www/html
 
 # execute CMD
 exec "$@"
