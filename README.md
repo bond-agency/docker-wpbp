@@ -6,21 +6,24 @@ Docker WordPress boilerplate is opinionated docker-compose template to start Wor
 
 ## Requirements
 
-You need to have [Docker](https://www.docker.com/) and docker-compose installed. This boilerplate is intended to be used with [nginx-le-proxy](https://github.com/bond-agency/nginx-le-proxy) and may need some small configuration changes if you want to make it work without it.
+You need to have [Docker](https://www.docker.com/) and docker-compose installed. This boilerplate is intended to be used with [nginx-le-proxy](https://github.com/bond-agency/nginx-le-proxy) and you need to bind the wanted port to the nginx container if you don't want to use the proxy.
 
 ## Usage
+
+Download the boilerplate as a zip file to use it as base for a new project.
 
 Add next line to your `.bash_profile` (or `.zshrc` etc.) file.
 ```bash
 # Export your user id
 export USER_ID=$(id -u)
 ```
-This ensures that docker-compose has always your user ID available as environment variable and it can be mapped for the containers and it needs to be done only once.
+This ensures that docker-compose has always your user ID available as environment variable and it can be mapped for the containers. This needs to be done only once. Remember to source the file before continuing: `source ~/.bash_profile`.
 
-Next you need to define all of the remaining variables in all relevant compose files:
+Next you need to define all of the remaining variables in all relevant compose files. There is compose files for three different environments: `development`, `staging` and `production`.
+
 ```yml
 ...
-- VIRTUAL_HOST=wpsite.dev
+- VIRTUAL_HOST=wpdocker.dev
 ...
 - MYSQL_ROOT_PASSWORD=example
 ...
@@ -33,20 +36,25 @@ These are the minimum values you need to change. If you are configuring the stag
 - LETSENCRYPT_EMAIL=mail@example.com
 ```
 
-If you are working on development environment, make sure that you have updated your `/etc/hosts` file with the same value as you have in the `VIRTUAL_HOST` variable.
+If you are working on development environment, make sure that you have updated your `/etc/hosts` file with the same value as you have in the `VIRTUAL_HOST` variable:
+
+```
+127.0.0.1   wpdocker.dev
+```
 
 Start the [nginx-le-proxy](https://github.com/bond-agency/nginx-le-proxy).
 
 Now you can start the project with command:
 ```bash
-docker-compose -f docker-compose.development.yml up
+docker-compose -f docker-compose.development.yml up -d
 ```
 
-If you want to start the container with detach mode and always rebuild the images you can use:
-```bash
-docker-compose -f docker-compose.development.yml up --build -d
+Now you can follow the logs of the composed containers with:
 ```
-This might be handy to use as post-command when deploying changes to the project.
+docker-compose -f docker-compose.development.yml logs -f
+```
+
+To rebuild the containers every time you can add `--build` flag to the `up`-command.
 
 The `wordpress/wp-content` folder is mounted from host machine so this the place where to put your own code.
 
