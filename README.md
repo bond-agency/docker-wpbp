@@ -2,7 +2,7 @@
 
 Docker WordPress boilerplate is opinionated docker-compose template to start WordPress project with Docker.
 
-**NOTICE: This boilerplate has not yet been tested in production.**
+**N.B. This boilerplate has not yet been tested in production.**
 
 ## Requirements
 
@@ -23,22 +23,27 @@ This ensures that docker-compose has always your user ID available as environmen
 source ~/.bash_profile
 ```
 
-Next you need to define all of the remaining variables in all relevant compose files. There is compose files for three different environments: `development`, `staging` and `production`.
+Now you need to define the `.env` file for rest of the variables. You can use the `.env.sample` as sample file and change the values for your purposes. You may also want to rename and duplicate the sample file for all different environments you are using like `.env.development`, `.env.staging` and `.env.production`.
 
-```yml
-...
-- VIRTUAL_HOST=wpdocker.dev
-...
-- MYSQL_ROOT_PASSWORD=example
-...
-- WPTB_ENV=development # This can be either development, staging or production
-- WORDPRESS_DB_PASSWORD=example # This needs to be same as MYSQL_ROOT_PASSWORD
+```bash
+# Define the used WPTB environment (development/staging/production)
+export WPTB_ENV=development
+
+# Select which nginx configuration to use (development/staging/production)
+export NGINX_ENV=production
+
+# Select the vhost/domain to use
+export VIRTUAL_HOST=wpdocker.dev
+
+# Select password for the database connection
+export WORDPRESS_DB_PASSWORD=example
+
+# Fill these only if you want to retrieve SSL certificate
+export LETSENCRYPT_HOST=
+export LETSENCRYPT_EMAIL=
 ```
-These are the minimum values you need to change. If you are configuring the staging or production environment compose files you also need to configure the Let's Encrypt values to get SSL certificates:
-```yml
-- LETSENCRYPT_HOST=example.com # Use same value as in VIRTUAL_HOST. This can also be a list like example.com,www.example.com
-- LETSENCRYPT_EMAIL=mail@example.com
-```
+
+The value of the `LETSENCRYPT_HOST` should be same as in `VIRTUAL_HOST`.
 
 If you are working on development environment, make sure that you have updated your `/etc/hosts` file with the same value as you have in the `VIRTUAL_HOST` variable:
 
@@ -46,16 +51,25 @@ If you are working on development environment, make sure that you have updated y
 127.0.0.1   wpdocker.dev
 ```
 
+### Start the project
+
 Start the [nginx-le-proxy](https://github.com/bond-agency/nginx-le-proxy).
 
-Now you can start the project with command:
+Now you need to source the correct `.env` file before you can start/build the containers
+
 ```bash
-docker-compose -f docker-compose.development.yml up -d
+source .env.development
 ```
 
-Now you can follow the logs of the composed containers with:
+Then start the containers
+
+```bash
+docker-compose up -d
 ```
-docker-compose -f docker-compose.development.yml logs -f
+
+Now you can follow the logs of the composed containers with
+```
+docker-compose logs -f
 ```
 
 To rebuild the containers every time you can add `--build` flag to the `up`-command.
