@@ -33,7 +33,7 @@ status=$(docker-compose ps)
 if [[ $status == *Up* ]] ; then
   # Nothing to do.
   echo "Already up and running."
-  echo "To rebuild the containers use: docker-compose up -d --build"
+  echo "To rebuild the containers use: source $env_file && docker-compose up -d --build"
   exit 0
 else
   # Build and start the containers.
