@@ -1,11 +1,16 @@
 #!/bin/bash
 
-# Default .env filename
+# Default .env filename if not given as parameter
 default=".env.development"
 
-# Ask which .env file to use
-read -p "What .env file to use? [$default]: " env_file
-env_file=${env_file:-$default}
+# Check if the .env filename was given as first argument?
+if [ -z "$1" ]; then
+  # Ask which .env file to use
+  read -p "What .env file to use? [$default]: " env_file
+  env_file=${env_file:-$default}
+else
+  env_file=$1
+fi
 
 # Check if that file exists and source it
 if [ ! -f $env_file ]; then
