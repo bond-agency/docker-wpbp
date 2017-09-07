@@ -55,19 +55,13 @@ If you are working on development environment, make sure that you have updated y
 
 Start the [nginx-le-proxy](https://github.com/bond-agency/nginx-le-proxy).
 
-Now you need to source the correct `.env` file before you can start/build the containers
+Now you can start the containers with the start script.
 
 ```bash
-source .env.development
+sh start.sh
 ```
 
-Then start the containers
-
-```bash
-docker-compose up -d
-```
-
-Now you can follow the logs of the composed containers with
+You can follow the logs of the composed containers with
 ```
 docker-compose logs -f
 ```
