@@ -24,5 +24,3 @@ RUN chmod +x /custom-entrypoint.sh
 ENTRYPOINT ["/custom-entrypoint.sh"]
 
 CMD ["php-fpm"]
-
-USER www-data

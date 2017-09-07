@@ -17,6 +17,7 @@ if [ ! -f $env_file ]; then
   echo "No .env file named '$env_file' found!"
   exit 1
 else
+  # Source the .env file
   source $env_file
 fi
 
@@ -36,5 +37,5 @@ if [[ $status == *Up* ]] ; then
   exit 0
 else
   # Build and start the containers.
-  docker-compose up -d --build
+  exec docker-compose up -d --build
 fi
