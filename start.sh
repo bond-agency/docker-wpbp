@@ -27,15 +27,25 @@ fi
 [ -z "$VIRTUAL_HOST" ] && echo "You need to set VIRTUAL_HOST" && exit 1;
 [ -z "$WORDPRESS_DB_PASSWORD" ] && echo "You need to set WORDPRESS_DB_PASSWORD" && exit 1;
 
+# Print disclaimer about denerated file.
+echo "Building docker-compose.yml ..."
+echo "#############################################################" > "docker-compose.yml"
+echo "# THIS IS AUTOMATICALLY GENERATED FILE. DO NOT MODIFY THIS! #" >> "docker-compose.yml"
+echo "#############################################################" >> "docker-compose.yml"
+
+# Generate the content of docker-compose.yml from our config.
+envsubst < "config.yml" >> "docker-compose.yml"
+
 status=$(docker-compose ps)
 
 # Check if the containers are already built
 if [[ $status == *Up* ]] ; then
   # Nothing to do.
-  echo "Already up and running."
+  echo " "
+  echo "Containers already up and running."
   echo "To rebuild the containers use: source $env_file && docker-compose up -d --build"
   exit 0
 else
   # Build and start the containers.
-  exec docker-compose up -d --build
+  docker-compose up -d --build
 fi
