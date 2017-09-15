@@ -4,12 +4,12 @@
  * current environment. This must be defined in all environments though.
  */
 
-define( 'WPTB_ENV', getenv( 'WPTB_ENV' ) );
+$env = getenv( 'WPTB_ENV' );
 
-if( ! defined( 'WPTB_ENV' ) ) {
-  //define( 'WPTB_ENV', 'development' );
-  //define( 'WPTB_ENV', 'staging' );
+if ( empty($env) ) {
   define( 'WPTB_ENV', 'production' );
+} else {
+  define( 'WPTB_ENV', $env );
 }
 
 define( 'DISALLOW_FILE_EDIT', true );
