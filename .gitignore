@@ -11,12 +11,12 @@
 /wordpress/wp-content/mu-plugins/**
 
 # Don't take tests, docs or bin files under mu-plugins.
-/mu-plugins/includes/vendor/**/[Tt]est/
-/mu-plugins/includes/vendor/**/[Tt]ests/
-/mu-plugins/includes/vendor/**/doc/
-/mu-plugins/includes/vendor/**/docs/
-/mu-plugins/includes/vendor/**/bin/
-/mu-plugins/includes/vendor/**/.*
+/wordpress/wp-content/mu-plugins/includes/vendor/**/[Tt]est/
+/wordpress/wp-content/mu-plugins/includes/vendor/**/[Tt]ests/
+/wordpress/wp-content/mu-plugins/includes/vendor/**/doc/
+/wordpress/wp-content/mu-plugins/includes/vendor/**/docs/
+/wordpress/wp-content/mu-plugins/includes/vendor/**/bin/
+/wordpress/wp-content/mu-plugins/includes/vendor/**/.*
 
 # My themes.
 !/wordpress/wp-content/themes/YOUR_THEME/
