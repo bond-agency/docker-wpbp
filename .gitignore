@@ -10,14 +10,6 @@
 /wordpress/wp-content/plugins/**
 /wordpress/wp-content/mu-plugins/**
 
-# Don't take tests, docs or bin files under mu-plugins.
-/wordpress/wp-content/mu-plugins/includes/vendor/**/[Tt]est/
-/wordpress/wp-content/mu-plugins/includes/vendor/**/[Tt]ests/
-/wordpress/wp-content/mu-plugins/includes/vendor/**/doc/
-/wordpress/wp-content/mu-plugins/includes/vendor/**/docs/
-/wordpress/wp-content/mu-plugins/includes/vendor/**/bin/
-/wordpress/wp-content/mu-plugins/includes/vendor/**/.*
-
 # My themes.
 !/wordpress/wp-content/themes/YOUR_THEME/
 !/wordpress/wp-content/themes/YOUR_THEME/**
@@ -27,6 +19,14 @@
 !/wordpress/wp-content/mu-plugins/1-timber-loader.php
 !/wordpress/wp-content/mu-plugins/includes/
 !/wordpress/wp-content/mu-plugins/includes/**
+
+# Don't take tests, docs or bin files under vendor directories.
+/**/includes/vendor/**/[Tt]est/
+/**/includes/vendor/**/[Tt]ests/
+/**/includes/vendor/**/doc/
+/**/includes/vendor/**/docs/
+/**/includes/vendor/**/bin/
+/**/includes/vendor/**/.*
 
 # Global ignores - no matter what we're not going to take these.
 **/node_modules/
