@@ -28,6 +28,7 @@ services:
     image: mariadb
     volumes:
       - ./database:/var/lib/mysql
+      - ./mariadb/cusrom.cnf:/etc/mysql/conf.d/custom.cnf:ro
     restart: always
     environment:
       - MYSQL_ROOT_PASSWORD=${WORDPRESS_DB_PASSWORD}
