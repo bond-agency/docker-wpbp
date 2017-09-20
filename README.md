@@ -6,7 +6,7 @@ Docker WordPress boilerplate is opinionated docker-compose template to start Wor
 
 ## Requirements
 
-You need to have [Docker](https://www.docker.com/) and docker-compose installed. This boilerplate is intended to be used with [nginx-le-proxy](https://github.com/bond-agency/nginx-le-proxy) and you need to bind the wanted port to the nginx container if you don't want to use the proxy.
+You need to have [Docker](https://www.docker.com/) and docker-compose installed. This boilerplate is intended to be used with [nginx-le-proxy](https://github.com/bond-agency/nginx-le-proxy) and you need to bind the wanted port to the nginx container if you don't want to use the proxy. The `start.sh` also requires `envsubst` to be installed.
 
 ## Usage
 
