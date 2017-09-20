@@ -12,6 +12,11 @@ RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli
 # Custom php.ini for sendmail path
 COPY ./config/php.ini /usr/local/etc/php/conf.d/php.ini
 
+# Make changes to php-fpm confg.
+# Reference: https://guides.wp-bullet.com/adjusting-php-fpm-performance-low-memory/
+RUN sed -i -e 's/^pm = dynamic/pm = ondemand/g' /usr/local/etc/php-fpm.d/www.conf && \
+    sed -i -e 's/^;pm.max_requests = 500/pm.max_requests = 500/g' /usr/local/etc/php-fpm.d/www.conf
+
 WORKDIR /var/www/html
 
 # Custom entrypoint to install WP & replace wp-config
