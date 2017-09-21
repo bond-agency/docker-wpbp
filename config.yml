@@ -17,7 +17,7 @@ services:
       - ./wordpress/wp-content:/var/www/html/wp-content
     links:
       - wordpress
-    restart: always
+    restart: unless-stopped
     environment:
       - VIRTUAL_HOST=${VIRTUAL_HOST}
       - LETSENCRYPT_HOST=${LETSENCRYPT_HOST}
@@ -29,7 +29,7 @@ services:
     volumes:
       - ./database:/var/lib/mysql
       - ./mariadb/custom.cnf:/etc/mysql/conf.d/custom.cnf:ro
-    restart: always
+    restart: unless-stopped
     environment:
       - MYSQL_ROOT_PASSWORD=${WORDPRESS_DB_PASSWORD}
 
@@ -37,7 +37,7 @@ services:
   wordpress:
     build:
       context: ./wordpress
-    restart: always
+    restart: unless-stopped
     links:
       - database
     volumes:
