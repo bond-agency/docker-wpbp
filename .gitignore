@@ -23,6 +23,7 @@
 # Don't take tests, docs or bin files under vendor directories.
 /**/includes/vendor/**/[Tt]est/
 /**/includes/vendor/**/[Tt]ests/
+!/**/includes/vendor/twig/twig/lib/**/Test/
 /**/includes/vendor/**/doc/
 /**/includes/vendor/**/docs/
 /**/includes/vendor/**/bin/
