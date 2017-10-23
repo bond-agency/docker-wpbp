@@ -3,7 +3,7 @@ services:
 
   # nginx
   nginx:
-    image: roopemerikukka/nginx-extras:latest
+    image: bondagency/nginx-extras:latest
     expose:
       - 80
     volumes:
