@@ -35,8 +35,7 @@ services:
 
   # wordpress
   wordpress:
-    build:
-      context: ./wordpress
+    image: bondagency/docker-wpbp-wordpress
     restart: unless-stopped
     links:
       - database
