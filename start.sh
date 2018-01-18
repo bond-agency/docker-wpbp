@@ -26,6 +26,7 @@ fi
 [ -z "$NGINX_ENV" ] && echo "You need to set NGINX_ENV" && exit 1;
 [ -z "$VIRTUAL_HOST" ] && echo "You need to set VIRTUAL_HOST" && exit 1;
 [ -z "$WORDPRESS_DB_PASSWORD" ] && echo "You need to set WORDPRESS_DB_PASSWORD" && exit 1;
+[ -z "$HOSTNAME" ] && echo "You need to set HOSTNAME" && exit 1;
 
 # Print disclaimer about denerated file.
 echo "Building docker-compose.yml ..."
