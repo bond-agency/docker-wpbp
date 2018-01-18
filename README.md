@@ -39,6 +39,9 @@ export WORDPRESS_DB_PASSWORD=example
 # Fill these only if you want to retrieve SSL certificate
 export LETSENCRYPT_HOST=
 export LETSENCRYPT_EMAIL=
+
+# Hostname of the containers. This should be the FQDN of the application.
+export HOSTNAME=
 ```
 
 The value of the `LETSENCRYPT_HOST` should be same as in `VIRTUAL_HOST`.
