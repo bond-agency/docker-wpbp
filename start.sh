@@ -48,7 +48,7 @@ if [[ $status == *Up* ]] ; then
   echo " "
   echo "Testing and reloading the nginx configuration..."
   echo " "
-  docker-compose exec nginx bash -c "nginx -t && nginx -s reload"
+  docker-compose exec -d nginx bash -c "nginx -t && nginx -s reload"
   exit 0
 else
   # Build and start the containers.
