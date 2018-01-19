@@ -18,6 +18,9 @@ services:
     links:
       - wordpress
     restart: unless-stopped
+    logging:
+      options:
+        max-size: "10m"
     environment:
       - VIRTUAL_HOST=${VIRTUAL_HOST}
       - LETSENCRYPT_HOST=${LETSENCRYPT_HOST}
@@ -31,6 +34,9 @@ services:
       - ./database:/var/lib/mysql
       - ./mariadb/custom.cnf:/etc/mysql/conf.d/custom.cnf:ro
     restart: unless-stopped
+    logging:
+      options:
+        max-size: "10m"
     environment:
       - MYSQL_ROOT_PASSWORD=${WORDPRESS_DB_PASSWORD}
 
@@ -38,6 +44,9 @@ services:
   wordpress:
     image: bondagency/docker-wpbp-wordpress
     restart: unless-stopped
+    logging:
+      options:
+        max-size: "10m"
     links:
       - database
     volumes:
