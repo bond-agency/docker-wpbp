@@ -18,6 +18,7 @@ services:
     links:
       - wordpress
     restart: unless-stopped
+    hostname: nginx.${HOSTNAME}
     logging:
       options:
         max-size: "10m"
@@ -34,6 +35,7 @@ services:
       - ./database:/var/lib/mysql
       - ./mariadb/custom.cnf:/etc/mysql/conf.d/custom.cnf:ro
     restart: unless-stopped
+    hostname: database.${HOSTNAME}
     logging:
       options:
         max-size: "10m"
@@ -44,6 +46,7 @@ services:
   wordpress:
     image: bondagency/docker-wpbp-wordpress
     restart: unless-stopped
+    hostname: wordpress.${HOSTNAME}
     logging:
       options:
         max-size: "10m"
