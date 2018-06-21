@@ -71,6 +71,16 @@ To rebuild the containers every time you can add `--build` flag to the `up`-comm
 
 The `wordpress/wp-content` folder is mounted from host machine so this the place where to put your own code.
 
+## Caching
+
+The boilerplate has ability to use FastCGI cache and it is [enabled by default in production mode](https://github.com/bond-agency/docker-wpbp/blob/master/nginx/config/vhost.production.conf#L30).
+
+The project has a small script to purge this cache. The script is ment to be used in example always you have deployed new code and you want the cache to be cleaned. This could be the example command after successful deployment:
+
+```
+bash start.sh .env.production && bash purge.sh
+```
+
 ## Contributing
 
 You can open an issue if you have found a bug or you have an enhancement suggestion.
