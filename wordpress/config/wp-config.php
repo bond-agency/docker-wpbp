@@ -5,11 +5,16 @@
  */
 
 $env = getenv( 'WPTB_ENV' );
+$acf_key = getenv( 'ACF_KEY' );
 
 if ( empty($env) ) {
   define( 'WPTB_ENV', 'production' );
 } else {
   define( 'WPTB_ENV', $env );
+}
+
+if( ! empty( $acf_key ) ) {
+  define( 'ACF_KEY', $acf_key );
 }
 
 define( 'DISALLOW_FILE_EDIT', true );

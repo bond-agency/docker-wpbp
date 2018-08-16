@@ -14,7 +14,7 @@ services:
       - ./nginx/config/vhost.${NGINX_ENV}.conf:/etc/nginx/vhost.conf:ro
       - ./nginx/config/mime.types:/etc/nginx/mime.types:ro
       - ./nginx/config/nginx.conf:/etc/nginx/nginx.conf:ro
-      - ./wordpress/wp-content:/var/www/html/wp-content
+      - ./wordpress/wp-content:/var/www/html/wp-content${MOUNT_CACHE}
     links:
       - wordpress
     restart: unless-stopped
@@ -53,7 +53,7 @@ services:
     links:
       - database
     volumes:
-      - ./wordpress/wp-content:/var/www/html/wp-content
+      - ./wordpress/wp-content:/var/www/html/wp-content${MOUNT_CACHE}
       - ./wordpress/config/wp-config.php:/var/www/config/wp-config.php:ro
       - www-data:/var/www/html
       - www-cache:/var/www/cache
@@ -63,6 +63,7 @@ services:
       - WPTB_ENV=${WPTB_ENV}
       - WORDPRESS_DB_PASSWORD=${WORDPRESS_DB_PASSWORD}
       - USER_ID=${USER_ID}
+      - ACF_KEY=${ACF_KEY}
 
 volumes:
   www-data:

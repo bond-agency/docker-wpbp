@@ -44,7 +44,9 @@ if [[ $status == *Up* ]] ; then
   # Nothing to do.
   echo " "
   echo "Containers already up and running."
-  echo "To rebuild the containers use: source $env_file && docker-compose up -d --build"
+  echo "To restart the containers with updated configuration, run:"
+  echo " "
+  echo "docker-compose up -d"
   echo " "
   echo "Testing and reloading the nginx configuration..."
   echo " "

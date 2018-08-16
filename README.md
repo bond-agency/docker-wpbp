@@ -28,7 +28,7 @@ Now you need to define the `.env` file for rest of the variables. You can use th
 export WPTB_ENV=development
 
 # Select which nginx configuration to use (development/staging/production)
-export NGINX_ENV=production
+export NGINX_ENV=development
 
 # Select the vhost/domain to use
 export VIRTUAL_HOST=wpdocker.dev
@@ -41,7 +41,13 @@ export LETSENCRYPT_HOST=
 export LETSENCRYPT_EMAIL=
 
 # Hostname of the containers. This should be the FQDN of the application.
-export HOSTNAME=
+export HOSTNAME=wpdocker.dev
+
+# ACF pro lisence key
+export ACF_KEY=your-advanced-custom-fields-key
+
+# Caching method for mounts (:cached/:delegated/:conststent/<empty>)
+export MOUNT_CACHE=
 ```
 
 The value of the `LETSENCRYPT_HOST` should be same as in `VIRTUAL_HOST`.
