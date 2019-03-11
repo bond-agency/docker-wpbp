@@ -30,13 +30,15 @@ export WPTB_ENV=development
 # Select which nginx configuration to use (development/staging/production)
 export NGINX_ENV=development
 
-# Select the vhost/domain to use
+# Select the vhost/domain to use.
+# For multiple hosts, separate by comma. Example: www.wpdocker.dev,wpdocker.dev
 export VIRTUAL_HOST=wpdocker.dev
 
 # Select password for the database connection
 export WORDPRESS_DB_PASSWORD=example
 
 # Fill these only if you want to retrieve SSL certificate
+# For multiple hosts, separate by comma. Example: www.wpdocker.dev,wpdocker.dev
 export LETSENCRYPT_HOST=
 export LETSENCRYPT_EMAIL=
 
